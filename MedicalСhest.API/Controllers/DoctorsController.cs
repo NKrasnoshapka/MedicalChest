@@ -50,5 +50,12 @@ namespace MedicalСhest.API.Controllers
             var doctor = await _mediator.Send(booksByIdQuery, token);
             return Ok(doctor);
         }
+
+        [HttpPut("doctors")]
+        public async Task<IActionResult> UpdateDoctor([FromBody] UpdateDoctorCommand doctor, CancellationToken token = default)
+        {
+            await _mediator.Send(doctor, token);
+            return Ok();
+        }
     }
 }
