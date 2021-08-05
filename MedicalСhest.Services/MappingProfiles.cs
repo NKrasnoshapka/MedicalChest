@@ -28,7 +28,8 @@ namespace MedicalСhest.Services
                 .ForMember(dest => dest.DateOfBirth, source => source.MapFrom(src => src.DateOfBirth))
                 .ForMember(dest => dest.Organisation, source => source.MapFrom(src => src.Organisation))
                 .ForMember(dest => dest.Email, source => source.MapFrom(src => "medicalChest@gmail.com"))
-                .ForMember(dest => dest.Age, source => source.MapFrom(src => src.DateOfBirth.CalculateAge()));
+                .ForMember(dest => dest.Age, source => source.MapFrom(src => src.DateOfBirth.CalculateAge()))
+                .ForMember(dest => dest.Specialisation, source => source.MapFrom(src => src.Specialisation));
         }
 
         public void DoctorMapping()
@@ -38,7 +39,8 @@ namespace MedicalСhest.Services
                 .ForMember(dest => dest.FirstName, source => source.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.LastName, source => source.MapFrom(src => src.LastName))
                 .ForMember(dest => dest.Organisation, source => source.MapFrom(src => src.Organisation))
-                .ForMember(dest => dest.Age, source => source.MapFrom(src => src.Age));
+                .ForMember(dest => dest.Age, source => source.MapFrom(src => src.Age))
+                .ForMember(dest => dest.Specialisation, source => source.MapFrom(src => src.Specialisation.ToString()));
         }
 
         public void UpdateDoctorMapping()
