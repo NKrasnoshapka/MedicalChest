@@ -17,19 +17,19 @@ namespace MedicalСhest.Services.Infrastructure
         public static void RegisterHandlers(this IServiceCollection services)
         {
             services.For<AddNewDoctorCommand, Unit>()
-                .AddHandler<AddNewDoctorHendler>()
+                .AddHandler<AddNewDoctorHandler>()
                 .Scoped();
 
             services.For<AllDoctorsQueries, IEnumerable<DoctorDTO>>()
-                .AddHandler<AllDoctorsHendler>()
+                .AddHandler<AllDoctorHandler>()
                 .Scoped();
 
             services.For<DoctorByIdQueries, DoctorDTO>()
-                .AddHandler<DoctorByIdHendler>()
+                .AddHandler<DoctorByIdHandler>()
                 .Scoped();
 
             services.For<UpdateDoctorCommand, Unit>()
-                .AddHandler<UpdateDoctorHendler>()
+                .AddHandler<UpdateDoctorHandler>()
                 .Scoped();
         }
 

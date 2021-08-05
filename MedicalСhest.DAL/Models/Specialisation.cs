@@ -7,7 +7,6 @@ using System.Text.Json.Serialization;
 
 namespace MedicalСhest.DAL.Models
 {
-    //[JsonConverter(typeof(StringEnumConverter))]
     public enum Specialisation
     {
         [EnumMember(Value = "Physician")]

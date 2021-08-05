@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MedicalСhest.API.Controllers
 {
-    [Route("api/")]
+    [Route("api/doctors")]
     [ApiController]
     public class DoctorsController : ControllerBase
     {
@@ -23,27 +23,21 @@ namespace MedicalСhest.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("doctors")]
+        [HttpPost]
         public async Task<IActionResult> AddNewDoctor([FromBody] AddNewDoctorCommand newDoctor, CancellationToken token = default)
         {
             await _mediator.Send(newDoctor, token);
             return Ok();
         }
 
-        [HttpGet("test")]
-        public IActionResult TestGet()
-        {
-            return Ok("Sucsess");
-        }
-
-        [HttpGet("doctors")]
+        [HttpGet]
         public async Task<IActionResult> GetAllDoctors(CancellationToken token = default)
         {
             var allDoctors = await _mediator.Send(new AllDoctorsQueries(), token);
             return Ok(allDoctors);
         }
 
-        [HttpGet("doctor/{doctorId}")]
+        [HttpGet("{doctorId}")]
         public async Task<IActionResult> GetDoctorById(string doctorId, CancellationToken token = default)
         {
             var booksByIdQuery = new DoctorByIdQueries { Id = Guid.Parse(doctorId) };
@@ -51,7 +45,7 @@ namespace MedicalСhest.API.Controllers
             return Ok(doctor);
         }
 
-        [HttpPut("doctors")]
+        [HttpPut]
         public async Task<IActionResult> UpdateDoctor([FromBody] UpdateDoctorCommand doctor, CancellationToken token = default)
         {
             await _mediator.Send(doctor, token);
