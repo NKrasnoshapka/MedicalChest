@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.Tests", "MedicalСhest.Tests\MedicalСhest.Tests.csproj", "{744B92E5-070C-4C6B-B064-88C17C038959}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalСhest.Tests", "MedicalСhest.Tests\MedicalСhest.Tests.csproj", "{744B92E5-070C-4C6B-B064-88C17C038959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.API", "MedicalСhest.API\MedicalСhest.API.csproj", "{69660740-38D5-4E59-8E55-361516041E90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalСhest.API", "MedicalСhest.API\MedicalСhest.API.csproj", "{69660740-38D5-4E59-8E55-361516041E90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.DAL", "MedicalСhest.DAL\MedicalСhest.DAL.csproj", "{0ADFA687-6153-409A-B8B0-EF91A62D7A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.Messages", "MedicalСhest.Messages\MedicalСhest.Messages.csproj", "{F557E8A4-F19D-4B75-B7E7-CA88D434CE98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.Services", "MedicalСhest.Services\MedicalСhest.Services.csproj", "{386EE120-E938-4A79-B23B-E8E51878ED4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalСhest.Helpers", "MedicalСhest.Helpers\MedicalСhest.Helpers.csproj", "{C690A7AB-14A7-4E11-A229-82091FF4CD90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{69660740-38D5-4E59-8E55-361516041E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69660740-38D5-4E59-8E55-361516041E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69660740-38D5-4E59-8E55-361516041E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADFA687-6153-409A-B8B0-EF91A62D7A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADFA687-6153-409A-B8B0-EF91A62D7A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADFA687-6153-409A-B8B0-EF91A62D7A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADFA687-6153-409A-B8B0-EF91A62D7A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F557E8A4-F19D-4B75-B7E7-CA88D434CE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F557E8A4-F19D-4B75-B7E7-CA88D434CE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F557E8A4-F19D-4B75-B7E7-CA88D434CE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F557E8A4-F19D-4B75-B7E7-CA88D434CE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386EE120-E938-4A79-B23B-E8E51878ED4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386EE120-E938-4A79-B23B-E8E51878ED4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386EE120-E938-4A79-B23B-E8E51878ED4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386EE120-E938-4A79-B23B-E8E51878ED4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C690A7AB-14A7-4E11-A229-82091FF4CD90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C690A7AB-14A7-4E11-A229-82091FF4CD90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C690A7AB-14A7-4E11-A229-82091FF4CD90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C690A7AB-14A7-4E11-A229-82091FF4CD90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
