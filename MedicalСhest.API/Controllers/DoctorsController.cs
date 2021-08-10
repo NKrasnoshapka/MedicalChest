@@ -18,7 +18,7 @@ namespace MedicalСhest.API.Controllers
     {
         private readonly IMediator _mediator;
 
-        public DoctorsController(IMediator mediator, IMapper mapper)
+        public DoctorsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -40,8 +40,8 @@ namespace MedicalСhest.API.Controllers
         [HttpGet("{doctorId}")]
         public async Task<IActionResult> GetDoctorById(string doctorId, CancellationToken token = default)
         {
-            var booksByIdQuery = new DoctorByIdQueries { Id = Guid.Parse(doctorId) };
-            var doctor = await _mediator.Send(booksByIdQuery, token);
+            var doctorByIdQuery = new DoctorByIdQueries { Id = Guid.Parse(doctorId) };
+            var doctor = await _mediator.Send(doctorByIdQuery, token);
             return Ok(doctor);
         }
 
