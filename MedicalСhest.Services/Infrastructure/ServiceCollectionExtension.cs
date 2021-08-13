@@ -31,6 +31,22 @@ namespace MedicalСhest.Services.Infrastructure
             services.For<UpdateDoctorCommand, Unit>()
                 .AddHandler<UpdateDoctorHandler>()
                 .Scoped();
+
+            services.For<AddNewPatientCommand, Unit>()
+                .AddHandler<AddNewPatientHandler>()
+                .Scoped();
+
+            services.For<AllPatientsQueries, IEnumerable<PatinetDTO>>()
+                .AddHandler<AllPatientHandler>()
+                .Scoped();
+
+            services.For<PatientByIdQueries, PatinetDTO>()
+                .AddHandler<PatientByIdHandler>()
+                .Scoped();
+
+            services.For<UpdatePatientCommand, Unit>()
+                .AddHandler<UpdatePatientHandler>()
+                .Scoped();
         }
 
         private static ServiceRegistrationOptions<TRequest, TResponse> For<TRequest, TResponse>(this IServiceCollection services)

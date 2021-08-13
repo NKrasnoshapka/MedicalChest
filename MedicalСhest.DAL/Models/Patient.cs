@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalСhest.DAL.Models
 {
-    public class Doctor
+    public class Patient
     {
-        public Guid Id { get; set;}
-
-        public string Organisation { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -24,8 +20,6 @@ namespace MedicalСhest.DAL.Models
 
         public string Email { get; set; }
 
-        public Specialisation Specialisation { get; set; }
-
-        public List<Patient> Patients { get; set; } = new List<Patient>();
+        public List<Doctor> Doctors { get; set; } = new List<Doctor>();
     }
 }

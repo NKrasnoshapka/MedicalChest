@@ -2,7 +2,6 @@
 using MedicalСhest.DAL.Models;
 using MedicalСhest.Messages.Queries;
 using System.Collections.Generic;
-using System;
 using System.Threading.Tasks;
 using System.Threading;
 using AutoMapper;
@@ -12,21 +11,21 @@ using MedicalСhest.DAL.DTOs;
 
 namespace MedicalСhest.Services.Handlers
 {
-    public class DoctorByIdHandler : IRequestHandler<DoctorByIdQueries, DoctorDTO>
+    public class AllPatientHandler : IRequestHandler<AllPatientsQueries, IEnumerable<PatinetDTO>>
     {
         private readonly IMapper _mapper;
         private readonly MedicalСhestDBContext _medicalСhestDBContext;
 
-        public DoctorByIdHandler(IMapper mapper, MedicalСhestDBContext medicalСhestDBContext)
+        public AllPatientHandler(IMapper mapper, MedicalСhestDBContext medicalСhestDBContext)
         {
             _medicalСhestDBContext = medicalСhestDBContext;
             _mapper = mapper;
         }
 
-        public async Task<DoctorDTO> Handle(DoctorByIdQueries query, CancellationToken cancellationToken)
+        public async Task<IEnumerable<PatinetDTO>> Handle(AllPatientsQueries query, CancellationToken cancellationToken)
         {
-            var doctor = await _medicalСhestDBContext.Doctors.FindAsync(query.Id);
-            return _mapper.Map<Doctor, DoctorDTO>(doctor);
+            var patients = await _medicalСhestDBContext.Patients.ToListAsync();
+            return _mapper.Map<List<Patient>, List<PatinetDTO>>(patients);
         }
     }
 }
