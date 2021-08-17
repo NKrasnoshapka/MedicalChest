@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-
+using System.Text.Json.Serialization;
 using System.Reflection;
 
 namespace MedicalСhest.API
@@ -35,7 +35,12 @@ namespace MedicalСhest.API
 
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
-            services.AddControllers();
+            services.AddControllers()
+                    .AddJsonOptions(opts =>
+                    {
+                        var enumConverter = new JsonStringEnumConverter();
+                        opts.JsonSerializerOptions.Converters.Add(enumConverter);
+                    });
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(configAction =>

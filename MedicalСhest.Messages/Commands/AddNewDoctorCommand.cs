@@ -18,6 +18,6 @@ namespace MedicalСhest.Messages.Commands
 
         public string City { get; set; }
 
-        public string Specialisation { get; set; }
+        public Specialisation Specialisation { get; set; }
     }
 }

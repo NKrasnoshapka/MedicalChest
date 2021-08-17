@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MedicalСhest.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,6 @@ namespace MedicalСhest.Messages.Commands
 
         public string City { get; set; }
 
-        public string Specialisation { get; set; }
+        public Specialisation Specialisation { get; set; }
     }
 }
