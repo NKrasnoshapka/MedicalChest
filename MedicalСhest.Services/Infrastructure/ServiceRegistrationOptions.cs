@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using Library.Services.Infrastructure;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,16 @@ namespace MedicalСhest.Services.Infrastructure
         public ServiceRegistrationOptions(IServiceCollection services)
         {
             _services = services;
+        }
+
+        public ServiceRegistrationOptions<TRequest, TResponse> WithValidation<TValidator>()
+                where TValidator : class, IValidator<TRequest>
+        {
+            _typesToRegister.Add(typeof(TValidator));
+
+            _handlers.Add((provider, inner) => new ValidationRequestHandler<TRequest, TResponse>(provider.GetService<TValidator>(), inner));
+
+            return this;
         }
 
         public ServiceRegistrationOptions<TRequest, TResponse> AddHandler<THandler>()

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MedicalСhest.DAL.DTOs;
+using MedicalСhest.DAL.Validators;
 using MedicalСhest.Messages.Commands;
 using MedicalСhest.Messages.Queries;
 using MedicalСhest.Services.Handlers;
@@ -18,6 +19,7 @@ namespace MedicalСhest.Services.Infrastructure
         {
             services.For<AddNewDoctorCommand, Unit>()
                 .AddHandler<AddNewDoctorHandler>()
+                .WithValidation<DoctorValidator>()
                 .Scoped();
 
             services.For<AllDoctorsQueries, IEnumerable<DoctorDTO>>()
