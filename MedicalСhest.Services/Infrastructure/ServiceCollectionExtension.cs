@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using MedicalСhest.DAL.DTOs;
-using MedicalСhest.DAL.Validators;
 using MedicalСhest.Messages.Commands;
 using MedicalСhest.Messages.Queries;
 using MedicalСhest.Services.Handlers;
+using MedicalСhest.Services.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -36,6 +36,7 @@ namespace MedicalСhest.Services.Infrastructure
 
             services.For<AddNewPatientCommand, Unit>()
                 .AddHandler<AddNewPatientHandler>()
+                .WithValidation<PatientValidator>()
                 .Scoped();
 
             services.For<AllPatientsQueries, IEnumerable<PatinetDTO>>()

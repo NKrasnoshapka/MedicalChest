@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using MedicalСhest.DAL.Models;
 using MedicalСhest.Helpers.Extensions;
 using MedicalСhest.Messages.Commands;
 using System;
@@ -8,9 +7,9 @@ using System.Text;
 
 namespace MedicalСhest.Services.Validators
 {
-    public class DoctorValidator : AbstractValidator<AddNewDoctorCommand>
+    public class PatientValidator : AbstractValidator<AddNewPatientCommand>
     {
-        public DoctorValidator() 
+        public PatientValidator()
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty()
@@ -20,10 +19,11 @@ namespace MedicalСhest.Services.Validators
                 .NotEmpty()
                 .WithMessage("Last name is required");
 
-            RuleFor(x => x.Specialisation)
+            RuleFor(x => x.Email)
                 .NotEmpty()
-                .WithMessage("Specialisation is required")
-                .IsInEnum();
+                .WithMessage("Email is required.")
+                .EmailAddress()
+                .WithMessage("Email is in wrong format.");
 
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty()
@@ -34,7 +34,7 @@ namespace MedicalСhest.Services.Validators
 
         private bool BeValidDateOfBirth(DateTime dateOfBirth)
         {
-            return dateOfBirth.CalculateAge() > 18;
+            return dateOfBirth.CalculateAge() > 5;
         }
     }
 }
