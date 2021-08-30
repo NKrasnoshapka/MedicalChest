@@ -21,5 +21,6 @@ namespace MedicalСhest.DAL.Models
         public string Email { get; set; }
 
         public List<Doctor> Doctors { get; set; } = new List<Doctor>();
+        public List<Receipt> Receipts { get; set; } = new List<Receipt>();
     }
 }

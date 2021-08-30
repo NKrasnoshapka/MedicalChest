@@ -27,5 +27,6 @@ namespace MedicalСhest.DAL.Models
         public Specialisation Specialisation { get; set; }
 
         public List<Patient> Patients { get; set; } = new List<Patient>();
+        public List<Receipt> Receipts { get; set; } = new List<Receipt>();
     }
 }
