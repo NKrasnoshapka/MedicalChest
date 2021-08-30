@@ -17,7 +17,7 @@ namespace MedicalСhest.DAL.Models
         public Guid MedicationId { get; set; }
         public Medication Medication { get; set; }
 
-        public int Dosage { get; set; }
+        public string Dosage { get; set; }
 
         public int DurationInDays { get; set; }
 

@@ -4,14 +4,16 @@ using MedicalСhest.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedicalСhest.DAL.Migrations
 {
     [DbContext(typeof(MedicalСhestDBContext))]
-    partial class MedicalСhestDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210830090725_Medication_AddedDosage_AddedDosageForm")]
+    partial class Medication_AddedDosage_AddedDosageForm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,8 +141,8 @@ namespace MedicalСhest.DAL.Migrations
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Dosage")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Dosage")
+                        .HasColumnType("int");
 
                     b.Property<int>("DosesPerDay")
                         .HasColumnType("int");
