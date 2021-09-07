@@ -50,6 +50,10 @@ namespace MedicalСhest.Services.Infrastructure
             services.For<UpdatePatientCommand, Unit>()
                 .AddHandler<UpdatePatientHandler>()
                 .Scoped();
+
+            services.For<SeedDataCommand, Unit>()
+                .AddHandler<SeedDataHandler>()
+                .Scoped();
         }
 
         private static ServiceRegistrationOptions<TRequest, TResponse> For<TRequest, TResponse>(this IServiceCollection services)
