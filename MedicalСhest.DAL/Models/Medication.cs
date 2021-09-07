@@ -10,7 +10,7 @@ namespace MedicalСhest.DAL.Models
 
         public string Name { get; set; }
 
-        public bool NeedPrescriptions { get; set; }
+        public bool NeedLicense { get; set; }
 
         public DrugCategory DrugCategory { get; set; }
 

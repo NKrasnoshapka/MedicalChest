@@ -10,6 +10,7 @@ namespace MedicalСhest.DAL
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Medication> Medications { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
 
         public MedicalСhestDBContext(DbContextOptions<MedicalСhestDBContext> options)
             : base(options)

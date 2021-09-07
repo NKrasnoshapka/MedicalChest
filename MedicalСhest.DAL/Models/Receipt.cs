@@ -14,13 +14,6 @@ namespace MedicalСhest.DAL.Models
         public Guid PatientId { get; set; }
         public Patient Patient { get; set; }
 
-        public Guid MedicationId { get; set; }
-        public Medication Medication { get; set; }
-
-        public string Dosage { get; set; }
-
-        public int DurationInDays { get; set; }
-
-        public int DosesPerDay { get; set; }
+        public List<Prescription> Prescriptions { get; set; } = new List<Prescription>();
     }
 }
