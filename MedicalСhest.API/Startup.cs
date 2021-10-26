@@ -13,6 +13,11 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Text.Json.Serialization;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using MedicalСhest.DAL.IdentityModels;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace MedicalСhest.API
 {
@@ -33,8 +38,29 @@ namespace MedicalСhest.API
                 options.UseSqlServer(connection),
                 ServiceLifetime.Transient);
 
-            services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
-                .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+            services.AddIdentity<MedicalChestUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<MedicalСhestDBContext>();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                       .AddJwtBearer(options =>
+                       {
+                           options.SaveToken = true;
+                           options.RequireHttpsMetadata = false;
+                           options.TokenValidationParameters = new TokenValidationParameters()
+                           {
+                               ValidateIssuer = true,
+                               ValidateAudience = true,
+                               ValidAudience = Configuration["JWT:ValidAudience"],
+                               ValidIssuer = Configuration["JWT:ValidIssuer"],
+                               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+                           };
+                       });
+
             services.AddControllers()
                     .AddJsonOptions(opts =>
                     {

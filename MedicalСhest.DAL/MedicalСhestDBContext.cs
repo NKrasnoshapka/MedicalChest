@@ -1,10 +1,12 @@
-﻿using MedicalСhest.DAL.Models;
+﻿using MedicalСhest.DAL.IdentityModels;
+using MedicalСhest.DAL.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace MedicalСhest.DAL
 {
-    public class MedicalСhestDBContext : DbContext
+    public class MedicalСhestDBContext : IdentityDbContext<MedicalChestUser>
     {
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -15,6 +17,11 @@ namespace MedicalСhest.DAL
         public MedicalСhestDBContext(DbContextOptions<MedicalСhestDBContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

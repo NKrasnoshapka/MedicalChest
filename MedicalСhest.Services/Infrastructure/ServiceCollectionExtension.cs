@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using MedicalСhest.DAL.DTOs;
+using MedicalСhest.DAL.IdentityModels;
 using MedicalСhest.Messages.Commands;
 using MedicalСhest.Messages.Queries;
 using MedicalСhest.Services.Handlers;
 using MedicalСhest.Services.Validators;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -53,6 +55,14 @@ namespace MedicalСhest.Services.Infrastructure
 
             services.For<SeedDataCommand, Unit>()
                 .AddHandler<SeedDataHandler>()
+                .Scoped();
+
+            services.For<LoginQueries, JwtToken>()
+                .AddHandler<LoginHandler>()
+                .Scoped();
+
+            services.For<RegisterUserCommand, IdentityResult>()
+                .AddHandler<RegisterUserHandler>()
                 .Scoped();
         }
 
