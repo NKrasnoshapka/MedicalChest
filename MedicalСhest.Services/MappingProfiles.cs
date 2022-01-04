@@ -19,6 +19,7 @@ namespace MedicalСhest.Services
             AddNewPatinetMapping();
             PatientMapping();
             UpdatePatientMapping();
+            AddReceiptMapping();
         }
 
         public void AddNewDoctorMapping()
@@ -93,6 +94,15 @@ namespace MedicalСhest.Services
                 .ForMember(dest => dest.City, source => source.MapFrom(src => src.City))
                 .ForMember(dest => dest.Email, source => source.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Age, source => source.MapFrom(src => src.DateOfBirth.CalculateAge()));
+        }
+
+        public void AddReceiptMapping()
+        {
+            CreateMap<PrescriptionDTO, Prescription>()
+                .ForMember(dest => dest.Id, source => source.MapFrom(src => Guid.NewGuid()))
+                .ForMember(dest => dest.MedicationId, source => source.MapFrom(src => src.MedicationId))
+                .ForMember(dest => dest.Dosage, source => source.MapFrom(src => src.Dosage))
+                .ForMember(dest => dest.DosesPerDay, source => source.MapFrom(src => src.DosesPerDay));
         }
     }
 }

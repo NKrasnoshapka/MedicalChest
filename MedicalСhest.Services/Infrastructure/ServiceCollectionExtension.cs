@@ -64,6 +64,15 @@ namespace MedicalСhest.Services.Infrastructure
             services.For<RegisterUserCommand, IdentityResult>()
                 .AddHandler<RegisterUserHandler>()
                 .Scoped();
+
+            services.For<AssignDoctorCommand, Unit>()
+                .AddHandler<AssignDoctorHandler>()
+                .WithValidation<AssignDoctorValidator>()
+                .Scoped();
+
+            services.For<AddReceiptCommand, Unit>()
+                 .AddHandler<AddReceiptHandler>()
+                 .Scoped();
         }
 
         private static ServiceRegistrationOptions<TRequest, TResponse> For<TRequest, TResponse>(this IServiceCollection services)

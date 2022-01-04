@@ -1,13 +1,12 @@
-﻿using FluentValidation;
-using MedicalСhest.Helpers.Extensions;
-using MedicalСhest.Messages.Commands;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MedicalСhest.Services.Validators
 {
-    public class DoctorValidator : AbstractValidator<AddNewDoctorCommand>
+    class ReceiptValidator
     {
-        public DoctorValidator() 
+        public DoctorValidator()
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty()
@@ -29,9 +28,9 @@ namespace MedicalСhest.Services.Validators
                 .WithMessage("Invalid date of birth");
         }
 
-        private bool BeValidDateOfBirth(DateTime dateOfBirth)
+        public async Task<bool> CheckIsDoctorNotAssigned(Guid doctorId, Guid patientId)
         {
-            return dateOfBirth.CalculateAge() > 18;
+
         }
     }
 }

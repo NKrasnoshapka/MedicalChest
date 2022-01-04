@@ -2,6 +2,7 @@
 using MediatR;
 using MedicalСhest.Messages.Commands;
 using MedicalСhest.Messages.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace MedicalСhest.API.Controllers
 {
+    //[Authorize]
     [Route("api/doctors")]
     [ApiController]
     public class DoctorsController : ControllerBase
@@ -49,6 +51,13 @@ namespace MedicalСhest.API.Controllers
         public async Task<IActionResult> UpdateDoctor([FromBody] UpdateDoctorCommand doctor, CancellationToken token = default)
         {
             await _mediator.Send(doctor, token);
+            return Ok();
+        }
+
+        [HttpPost("assigndoctor")]
+        public async Task<IActionResult> AssignDoctor([FromBody] AssignDoctorCommand assignDoctorCommand, CancellationToken token = default)
+        {
+            await _mediator.Send(assignDoctorCommand, token);
             return Ok();
         }
     }
